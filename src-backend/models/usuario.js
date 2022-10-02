@@ -58,7 +58,7 @@ const Usuario = db.define('usuarios', {
   }
 });
 
-tipoUsuario.hasOne(Usuario)
+Usuario.hasOne(tipoUsuario)
 tipoUsuario.belongsTo(Usuario)
 Usuario.hasOne(Condominio)
 Condominio.belongsTo(Usuario)

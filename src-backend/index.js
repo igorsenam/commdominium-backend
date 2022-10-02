@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 require('./controllers/tipoUsuarioController')(app);
 require('./controllers/condominioController')(app);
 require('./controllers/usuarioController')(app);
+require('./controllers/authController')(app);
 
 app.get('/', (req, res) => {
   res.send('Página Inicial OK!');

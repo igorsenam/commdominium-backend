@@ -1,14 +1,13 @@
 const express = require('express');
 
 const Usuario = require('../models/Usuario')
-const Condominio = require('../models/Condominio')
 
 const router = express.Router();
 
 router.get('/searchLogin', async (req, res) => {
   try {
     const searchUser = await Usuario.findOne({
-      where: { login: req.query.login, senha: req.query.senha }
+      where: { login: req.body.login, senha: req.body.password }
     })
     if (searchUser == null){
       return res.status(404).send({ error: "Usuário ou senha incorretos"})

@@ -1,68 +1,68 @@
 const Sequelize = require('sequelize');
 const db = require('../database/index.js');
-const tipoUsuario = require('./tipoUsuario.js');
-const Condominio = require('./condominio.js');
+const userType = require('./userType.js');
+const Condominium = require('./Condominium.js');
 
-const Usuario = db.define('usuarios', {
-  IDusuario: {
+const User = db.define('user', {
+  id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     unique: true,
     primaryKey: true
   },
-  nome: {
+  fullname: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  bloco: {
+  block: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  predio: {
+  building: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  numero: {
+  number: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  login: {
+  email: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
   },
-  senha: {
+  password: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  ativo: {
+  active: {
     type: Sequelize.BOOLEAN,
     allowNull: false
   },
-  IDtipo_usuario: {
+  id_userType: {
     type: Sequelize.INTEGER,
     required: true,
     references: {
-      model: 'tipo_usuarios',
-      key: 'IDtipo_usuario'
+      model: 'userTypes',
+      key: 'id'
     }
   },
-  IDcondominio: {
+  id_condominium: {
     type: Sequelize.INTEGER,
     required: true,
     references: {
-      model: 'condominios',
-      key: 'IDcondominio'
+      model: 'condominiums',
+      key: 'id'
     }
   }
 });
 
-Usuario.hasOne(tipoUsuario)
-tipoUsuario.belongsTo(Usuario)
-Usuario.hasOne(Condominio)
-Condominio.belongsTo(Usuario)
+User.hasOne(userType)
+userType.belongsTo(User)
+User.hasOne(Condominium)
+Condominium.belongsTo(User)
 
-Usuario.sync();
+User.sync();
 
-module.exports = Usuario;
+module.exports = User;

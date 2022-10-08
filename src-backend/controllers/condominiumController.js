@@ -1,13 +1,13 @@
 const express = require('express');
 
-const Condominio = require('../models/Condominio')
+const Condominium = require('../models/Condominium')
 
 const router = express.Router();
 
-router.post('/cadastrar', async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
-    const userType = await Condominio.create(req.body)
-    res.send({ userType });
+    const createCondominium = await Condominium.create(req.body)
+    res.send({ createCondominium });
   } catch(err) {
     return res.status(400).send({ error: "Falha no registro do condomínio"})
   }

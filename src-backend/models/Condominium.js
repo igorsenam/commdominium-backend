@@ -1,37 +1,37 @@
 const Sequelize = require('sequelize');
 const db = require('../database/index.js')
 
-const Condominio = db.define('condominios', {
-  IDcondominio: {
+const Condominium = db.define('condominiums', {
+  id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     unique: true,
     primaryKey: true
   },
-  nome: {
+  name: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  estado: {
+  state: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  cidade: {
+  city: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  logradouro: {
+  street: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  numero: {
+  number: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
   }
 });
 
-Condominio.sync();
+Condominium.sync();
 
-module.exports = Condominio;
+module.exports = Condominium;

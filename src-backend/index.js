@@ -1,19 +1,21 @@
 const express = require('express');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 
 const app = express();
 
-const db = require('./database/index')
-const tipoUsuario = require('./models/tipoUsuario')
-const Condominio = require('./models/condominio')
-const Usuario = require('./models/usuario')
+const db = require('./database/index.js')
+const tipoUsuario = require('./models/userType.js')
+const Condominio = require('./models/Condominium.js')
+const Usuario = require('./models/User.js')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
 
-require('./controllers/tipoUsuarioController')(app);
-require('./controllers/condominioController')(app);
-require('./controllers/usuarioController')(app);
+require('./controllers/userTypeController')(app);
+require('./controllers/condominiumController')(app);
+require('./controllers/userController')(app);
 require('./controllers/authController')(app);
 
 app.get('/', (req, res) => {

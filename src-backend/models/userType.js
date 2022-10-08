@@ -1,20 +1,20 @@
 const Sequelize = require('sequelize');
 const db = require('../database/index.js')
 
-const tipoUsuario = db.define('tipo_usuarios', {
-  IDtipo_usuario: {
+const userType = db.define('userTypes', {
+  id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     unique: true,
     primaryKey: true
   },
-  tipo: {
+  type: {
     type: Sequelize.STRING,
     allowNull: false,
   }
 });
 
-tipoUsuario.sync();
+userType.sync();
 
-module.exports = tipoUsuario;
+module.exports = userType;

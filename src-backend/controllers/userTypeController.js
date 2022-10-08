@@ -1,13 +1,13 @@
 const express = require('express');
 
-const tipoUsuario = require('../models/tipoUsuario')
+const userType = require('../models/userType')
 
 const router = express.Router();
 
-router.post('/cadastrar', async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
-    const userType = await tipoUsuario.create(req.body)
-    res.send({ userType });
+    const createUserType = await userType.create(req.body)
+    res.send({ createUserType });
   } catch(err) {
     return res.status(400).send({ error: "Falha no registro do tipo de usuário"})
   }

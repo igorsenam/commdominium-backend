@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const db = require('./database/index.js')
-const tipoUsuario = require('./models/userType.js')
-const Condominio = require('./models/Condominium.js')
-const Usuario = require('./models/User.js')
+const userType = require('./models/userType.js')
+const Condominium = require('./models/Condominium.js')
+const User = require('./models/User.js')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -23,4 +23,4 @@ app.get('/', (req, res) => {
   res.send('Página Inicial OK!');
 });
 
-app.listen(3000);
+app.listen(process.env.PORT);

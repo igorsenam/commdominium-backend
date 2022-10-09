@@ -88,8 +88,6 @@ userType.belongsTo(User)
 User.hasOne(Condominium)
 Condominium.belongsTo(User)
 
-
-
 User.sync();
 
 module.exports = User;

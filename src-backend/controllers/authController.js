@@ -10,8 +10,8 @@ router.post('/searchLogin', async (req, res) => {
   if(searchLogin){
      const password_valid = await bcrypt.compare(req.body.password,searchLogin.password);
      if (password_valid){
-      //token = jwt.sign(req.body);
-      res.status(200).send({ user: searchLogin })
+      token = jwt.sign({ id: searchLogin.id, email: searchLogin.email }, process.env.SECRET);
+      res.status(200).send({ user: searchLogin, token: token })
      }
      else{
       res.status(400).send({ error: "Senha incorreta" })

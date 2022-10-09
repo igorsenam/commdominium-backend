@@ -1,5 +1,5 @@
 # Sensitive Data
-src-backend/database/database-login.js
+src-backend/.env
 
 # Logs
 logs

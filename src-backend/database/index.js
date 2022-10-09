@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize');
-var dblogin = require('./database-login');
 
-const sequelize = new Sequelize(dblogin.DATABASE,dblogin.USER,dblogin.PASSWORD, {
-  host: dblogin.HOST,
-  dialect: 'mysql'
+const sequelize = new Sequelize(process.env.DATABASE,process.env.USER,process.env.PASSWORD, {
+  host: process.env.HOST,
+  dialect: process.env.DIALECT
 });
 
 sequelize.authenticate()

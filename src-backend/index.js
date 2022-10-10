@@ -1,17 +1,17 @@
-require('dotenv').config({path:'./../commdominium-backend/.env'});
+require('dotenv').config({ path: './../commdominium-backend/.env' });
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
 
-const db = require('./database/index.js')
-const userType = require('./models/userType.js')
-const Condominium = require('./models/Condominium.js')
-const User = require('./models/User.js')
+const db = require('./database/index.js');
+const userType = require('./models/userType.js');
+const Condominium = require('./models/Condominium.js');
+const User = require('./models/User.js');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 require('./controllers/userTypeController')(app);

@@ -18,6 +18,7 @@ require('./controllers/userTypeController')(app);
 require('./controllers/condominiumController')(app);
 require('./controllers/userController')(app);
 require('./controllers/authController')(app);
+require('./controllers/queryTokenController')(app);
 
 app.get('/', (req, res) => {
   res.send('Página Inicial OK!');

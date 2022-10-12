@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 router.get('/findAll', async (req, res) => {
   try {
     const searchUser = await User.findAll();
-    if (!searchUser.lenght)
+    if (searchUser == 0)
       res.status(400).send({ error: 'Não existem usuários cadastrados' });
     else res.status(200).send({ searchUser: searchUser });
   } catch (err) {

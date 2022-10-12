@@ -21,7 +21,7 @@ router.get('/findAll', async (req, res) => {
     const searchAllUserType = await userType.findAll({
       attributes: { exclude: ['userId'] },
     });
-    if (!searchAllUserType.lenght)
+    if (searchAllUserType == 0)
       res
         .status(400)
         .send({ error: 'Não existem tipos de usuários cadastrados' });

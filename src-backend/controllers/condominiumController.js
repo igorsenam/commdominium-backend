@@ -23,7 +23,7 @@ router.get('/findAll', async (req, res) => {
     const searchCondominium = await Condominium.findAll({
       attributes: { exclude: ['userId'] },
     });
-    if (searchCondominium == null)
+    if (!searchCondominium.lenght)
       res.status(400).send({ error: 'Não existem condomínios cadastrados' });
     else res.status(200).send({ Condominium: searchCondominium });
   } catch (err) {

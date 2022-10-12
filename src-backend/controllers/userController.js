@@ -26,8 +26,14 @@ router.post('/register', async (req, res) => {
 });
 
 router.get('/findAll', async (req, res) => {
-  const searchUser = await User.findAll();
-  res.status(200).send({ searchUser });
+  try {
+    const searchUser = await User.findAll();
+    if (!searchUser.lenght)
+      res.status(400).send({ error: 'Não existem usuários cadastrados' });
+    else res.status(200).send({ searchUser: searchUser });
+  } catch (err) {
+    return res.status(400).send({ error: 'Falha na busca do usuário' });
+  }
 });
 
 router.post('/findById', async (req, res) => {

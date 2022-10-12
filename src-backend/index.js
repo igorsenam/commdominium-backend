@@ -6,19 +6,22 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const db = require('./database/index.js');
-const userType = require('./models/userType.js');
 const Condominium = require('./models/Condominium.js');
+const userType = require('./models/userType.js');
 const User = require('./models/User.js');
+const noticeType = require('./models/noticeType.js');
+const Notice = require('./models/notice.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-require('./controllers/userTypeController')(app);
 require('./controllers/condominiumController')(app);
+require('./controllers/userTypeController')(app);
 require('./controllers/userController')(app);
 require('./controllers/authController')(app);
 require('./controllers/queryTokenController')(app);
 require('./controllers/noticeTypeController')(app);
+require('./controllers/noticeController')(app);
 
 app.listen(process.env.PORT);

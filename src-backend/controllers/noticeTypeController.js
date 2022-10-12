@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
 router.get('/findAll', async (req, res) => {
   try {
     const searchAllNoticeType = await noticeType.findAll({
-      attributes: { exclude: ['userId'] },
+      attributes: { exclude: ['userId', 'noticeId'] },
     });
     if (searchAllNoticeType == 0)
       res.status(400).send({ error: 'Não existem tipos de aviso cadastrados' });
@@ -33,7 +33,7 @@ router.post('/findById', async (req, res) => {
   try {
     const searchNoticeTypeById = await noticeType.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['userId'] },
+      attributes: { exclude: ['userId', 'noticeId'] },
     });
     if (searchNoticeTypeById == null)
       res.status(400).send({ error: 'Tipo de aviso inexistente' });
@@ -47,7 +47,7 @@ router.patch('/update', async (req, res) => {
   try {
     const searchNoticeTypeById = await noticeType.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['userId'] },
+      attributes: { exclude: ['userId', 'noticeId'] },
     });
     if (searchNoticeTypeById == null) {
       return res.status(400).send({ error: 'Tipo de aviso inexistente' });
@@ -71,7 +71,7 @@ router.delete('/delete', async (req, res) => {
   try {
     const searchNoticeTypeById = await noticeType.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['userId'] },
+      attributes: { exclude: ['userId', 'noticeId'] },
     });
     if (searchNoticeTypeById == null) {
       return res.status(400).send({ error: 'Tipo de aviso inexistente' });

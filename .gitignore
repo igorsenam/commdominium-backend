@@ -1,5 +1,5 @@
 # Sensitive Data
-src-backend/.env
+src/.env
 
 # Logs
 logs

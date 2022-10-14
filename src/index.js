@@ -22,7 +22,7 @@ require('./controllers/userController')(app);
 require('./controllers/noticeTypeController')(app);
 require('./controllers/noticeController')(app);
 
-require('./controllers/authController')(app);
-require('./controllers/queryTokenController')(app);
+require('./authentication/authController')(app);
+require('./authentication/queryTokenController')(app);
 
 app.listen(process.env.PORT);

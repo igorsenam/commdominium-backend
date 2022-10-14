@@ -27,7 +27,9 @@ router.post('/register', async (req, res) => {
 
 router.get('/findAll', async (req, res) => {
   try {
-    const searchUser = await User.findAll();
+    const searchUser = await User.findAll({
+      attributes: { exclude: ['password'] },
+    });
     if (searchUser == 0)
       res.status(400).send({ error: 'Não existem usuários cadastrados' });
     else res.status(200).send({ searchUser: searchUser });
@@ -40,6 +42,7 @@ router.post('/findById', async (req, res) => {
   try {
     const searchUserById = await User.findOne({
       where: { id: req.body.id },
+      attributes: { exclude: ['password'] },
     });
     if (searchUserById == null)
       res.status(400).send({ error: 'Usuário inexistente' });

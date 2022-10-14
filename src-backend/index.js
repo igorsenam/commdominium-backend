@@ -19,9 +19,10 @@ app.use(cors());
 require('./controllers/condominiumController')(app);
 require('./controllers/userTypeController')(app);
 require('./controllers/userController')(app);
-require('./controllers/authController')(app);
-require('./controllers/queryTokenController')(app);
 require('./controllers/noticeTypeController')(app);
 require('./controllers/noticeController')(app);
+
+require('./controllers/authController')(app);
+require('./controllers/queryTokenController')(app);
 
 app.listen(process.env.PORT);

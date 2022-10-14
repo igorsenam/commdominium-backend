@@ -17,7 +17,23 @@ router.post('/authenticate', async (req, res) => {
         { id: searchLogin.id, email: searchLogin.email },
         process.env.SECRET
       );
-      res.status(200).send({ user: searchLogin, token: token });
+      delete searchLogin.password;
+      res.status(200).send({
+        user: {
+          id: searchLogin.id,
+          fullname: searchLogin.fullname,
+          block: searchLogin.block,
+          building: searchLogin.building,
+          number: searchLogin.number,
+          email: searchLogin.email,
+          active: searchLogin.id,
+          id_userType: searchLogin.id_userType,
+          id_condominium: searchLogin.id_condominium,
+          createdAt: searchLogin.createdAt,
+          updatedAt: searchLogin.updatedAt,
+        },
+        token: token,
+      });
     } else {
       res.status(400).send({ error: 'Senha incorreta' });
     }

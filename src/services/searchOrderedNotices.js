@@ -21,4 +21,4 @@ router.post('/findAllOrderedNotices', async (req, res) => {
   }
 });
 
-module.exports = (app) => app.use('/project', router);
+module.exports = (app) => app.use('/services', router);

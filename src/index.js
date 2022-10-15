@@ -25,4 +25,6 @@ require('./controllers/noticeController')(app);
 require('./authentication/authController')(app);
 require('./authentication/queryTokenController')(app);
 
+require('./services/searchOrderedNotices')(app);
+
 app.listen(process.env.PORT);

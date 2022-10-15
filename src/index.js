@@ -10,7 +10,8 @@ const Condominium = require('./models/Condominium.js');
 const userType = require('./models/userType.js');
 const User = require('./models/User.js');
 const noticeType = require('./models/noticeType.js');
-const Notice = require('./models/notice.js');
+const Notice = require('./models/Notice.js');
+const Complaint = require('./models/Complaint.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,6 +22,7 @@ require('./controllers/userTypeController')(app);
 require('./controllers/userController')(app);
 require('./controllers/noticeTypeController')(app);
 require('./controllers/noticeController')(app);
+require('./controllers/complaintController')(app);
 
 require('./authentication/authController')(app);
 require('./authentication/queryTokenController')(app);

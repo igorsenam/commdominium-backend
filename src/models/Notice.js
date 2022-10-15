@@ -18,6 +18,7 @@ const Notice = db.define('notices', {
   id_noticeType: {
     type: Sequelize.INTEGER,
     required: true,
+    allowNull: false,
     references: {
       model: 'noticeTypes',
       key: 'id',
@@ -26,6 +27,7 @@ const Notice = db.define('notices', {
   id_condominium: {
     type: Sequelize.INTEGER,
     required: true,
+    allowNull: false,
     references: {
       model: 'condominiums',
       key: 'id',

@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
       id_userType: req.body.id_userType,
       id_condominium: req.body.id_condominium,
     });
-    res.send({ createUser });
+    res.send(createUser);
   } catch (err) {
     return res.status(400).send({ error: 'Falha no registro do usuário' });
   }
@@ -32,7 +32,7 @@ router.get('/findAll', async (req, res) => {
     });
     if (searchUser == 0)
       res.status(400).send({ error: 'Não existem usuários cadastrados' });
-    else res.status(200).send({ searchUser: searchUser });
+    else res.status(200).send(searchUser);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do usuário' });
   }
@@ -46,7 +46,7 @@ router.post('/findById', async (req, res) => {
     });
     if (searchUserById == null)
       res.status(400).send({ error: 'Usuário inexistente' });
-    else res.status(200).send({ User: searchUserById });
+    else res.status(200).send(searchUserById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do usuário' });
   }

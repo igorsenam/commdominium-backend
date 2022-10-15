@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
       street: req.body.street,
       number: req.body.number,
     });
-    res.send({ createCondominium });
+    res.send(createCondominium);
   } catch (err) {
     return res.status(400).send({ error: 'Falha no registro do condomínio' });
   }
@@ -25,7 +25,7 @@ router.get('/findAll', async (req, res) => {
     });
     if (searchCondominium == 0)
       res.status(400).send({ error: 'Não existem condomínios cadastrados' });
-    else res.status(200).send({ Condominium: searchCondominium });
+    else res.status(200).send(searchCondominium);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do condomínio' });
   }
@@ -39,7 +39,7 @@ router.post('/findById', async (req, res) => {
     });
     if (searchCondominiumById == null)
       res.status(400).send({ error: 'Condomínio inexistente' });
-    else res.status(200).send({ Condominium: searchCondominiumById });
+    else res.status(200).send(searchCondominiumById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do condomínio' });
   }

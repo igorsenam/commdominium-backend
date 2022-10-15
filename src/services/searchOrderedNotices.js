@@ -14,7 +14,7 @@ router.post('/findAllOrderedNotices', async (req, res) => {
     if (searchNoticeById == 0) {
       res.status(400).send({ error: 'Não possuem avisos registrados' });
     } else {
-      res.status(200).send({ searchNoticeById });
+      res.status(200).send(searchNoticeById);
     }
   } catch (err) {
     res.status(200).send({ error: 'Falha ao busca os avisos' });

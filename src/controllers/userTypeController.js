@@ -8,7 +8,7 @@ router.post('/register', async (req, res) => {
     const createUserType = await userType.create({
       type: req.body.type,
     });
-    res.send({ createUserType });
+    res.send(createUserType);
   } catch (err) {
     return res
       .status(400)
@@ -25,7 +25,7 @@ router.get('/findAll', async (req, res) => {
       res
         .status(400)
         .send({ error: 'Não existem tipos de usuários cadastrados' });
-    else res.status(200).send({ userType: searchAllUserType });
+    else res.status(200).send(searchAllUserType);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do tipo de usuário' });
   }
@@ -39,7 +39,7 @@ router.post('/findById', async (req, res) => {
     });
     if (searchUserTypeById == null)
       res.status(400).send({ error: 'Tipo de usuário inexistente' });
-    else res.status(200).send({ userType: searchUserTypeById });
+    else res.status(200).send(searchUserTypeById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do tipo de usuário' });
   }

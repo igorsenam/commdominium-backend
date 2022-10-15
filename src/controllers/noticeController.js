@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => {
       id_noticeType: req.body.id_noticeType,
       id_condominium: req.body.id_condominium,
     });
-    res.send({ createNotice });
+    res.send(createNotice);
   } catch (err) {
     return res.status(400).send({ error: 'Falha no registro do aviso' });
   }
@@ -21,7 +21,7 @@ router.get('/findAll', async (req, res) => {
     const searchNotice = await Notice.findAll();
     if (searchNotice == 0)
       res.status(400).send({ error: 'Não existem avisos cadastrados' });
-    else res.status(200).send({ Notice: searchNotice });
+    else res.status(200).send(searchNotice);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do aviso' });
   }
@@ -34,7 +34,7 @@ router.post('/findById', async (req, res) => {
     });
     if (searchNoticeById == null)
       res.status(400).send({ error: 'Aviso inexistente' });
-    else res.status(200).send({ Notice: searchNoticeById });
+    else res.status(200).send(searchNoticeById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do aviso' });
   }

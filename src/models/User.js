@@ -46,6 +46,7 @@ const User = db.define(
     id_userType: {
       type: Sequelize.INTEGER,
       required: true,
+      allowNull: false,
       references: {
         model: 'userTypes',
         key: 'id',
@@ -54,6 +55,7 @@ const User = db.define(
     id_condominium: {
       type: Sequelize.INTEGER,
       required: true,
+      allowNull: false,
       references: {
         model: 'condominiums',
         key: 'id',

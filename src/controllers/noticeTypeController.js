@@ -8,7 +8,7 @@ router.post('/register', async (req, res) => {
     const createNoticeType = await noticeType.create({
       type: req.body.type,
     });
-    res.send({ createNoticeType });
+    res.send(createNoticeType);
   } catch (err) {
     return res
       .status(400)
@@ -23,7 +23,7 @@ router.get('/findAll', async (req, res) => {
     });
     if (searchAllNoticeType == 0)
       res.status(400).send({ error: 'Não existem tipos de aviso cadastrados' });
-    else res.status(200).send({ noticeType: searchAllNoticeType });
+    else res.status(200).send(searchAllNoticeType);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do tipo de aviso' });
   }
@@ -37,7 +37,7 @@ router.post('/findById', async (req, res) => {
     });
     if (searchNoticeTypeById == null)
       res.status(400).send({ error: 'Tipo de aviso inexistente' });
-    else res.status(200).send({ noticeType: searchNoticeTypeById });
+    else res.status(200).send(searchNoticeTypeById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do tipo de aviso' });
   }

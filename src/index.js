@@ -28,5 +28,6 @@ require('./authentication/authController')(app);
 require('./authentication/queryTokenController')(app);
 
 require('./services/searchOrderedNotices')(app);
+require('./services/searchUserList')(app);
 
 app.listen(process.env.PORT);

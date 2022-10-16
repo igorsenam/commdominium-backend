@@ -5,19 +5,19 @@ const router = express.Router();
 
 router.post('/findAllOrderedNotices', async (req, res) => {
   try {
-    const searchNoticeById = await Notice.findAll({
+    const searchOrderedNotices = await Notice.findAll({
       where: {
         id_condominium: req.body.id_condominium,
       },
       order: [['createdAt', 'DESC']],
     });
-    if (searchNoticeById == 0) {
+    if (searchOrderedNotices == 0) {
       res.status(400).send({ error: 'Não possuem avisos registrados' });
     } else {
-      res.status(200).send(searchNoticeById);
+      res.status(200).send(searchOrderedNotices);
     }
   } catch (err) {
-    res.status(200).send({ error: 'Falha ao busca os avisos' });
+    res.status(200).send({ error: 'Falha ao buscar os avisos' });
   }
 });
 

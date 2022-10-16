@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
 router.get('/findAll', async (req, res) => {
   try {
     const searchCondominium = await Condominium.findAll({
-      attributes: { exclude: ['userId', 'noticeId'] },
+      attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominium == 0)
       res.status(400).send({ error: 'Não existem condomínios cadastrados' });
@@ -35,7 +35,7 @@ router.post('/findById', async (req, res) => {
   try {
     const searchCondominiumById = await Condominium.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['userId', 'noticeId'] },
+      attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominiumById == null)
       res.status(400).send({ error: 'Condomínio inexistente' });
@@ -49,7 +49,7 @@ router.patch('/update', async (req, res) => {
   try {
     const searchCondominiumById = await Condominium.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['userId', 'noticeId'] },
+      attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominiumById == null) {
       return res.status(400).send({ error: 'Condomínio inexistente' });
@@ -77,7 +77,7 @@ router.delete('/delete', async (req, res) => {
   try {
     const searchCondominiumById = await Condominium.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['userId', 'noticeId'] },
+      attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominiumById == null) {
       return res.status(400).send({ error: 'Condomínio inexistente' });

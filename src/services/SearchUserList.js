@@ -18,7 +18,7 @@ router.post('/findUserList', async (req, res) => {
       res.status(200).send(searchUserList);
     }
   } catch (err) {
-    res.status(200).send({ error: 'Falha ao buscar os usuários' });
+    res.status(400).send({ error: 'Falha ao buscar os usuários' });
   }
 });
 

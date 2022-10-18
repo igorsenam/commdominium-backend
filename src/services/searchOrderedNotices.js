@@ -17,7 +17,7 @@ router.post('/findAllOrderedNotices', async (req, res) => {
       res.status(200).send(searchOrderedNotices);
     }
   } catch (err) {
-    res.status(200).send({ error: 'Falha ao buscar os avisos' });
+    res.status(400).send({ error: 'Falha ao buscar os avisos' });
   }
 });
 

@@ -18,7 +18,7 @@ router.post('/findAllUnresolvedComplaints', async (req, res) => {
       res.status(200).send(searchUnresolvedComplaints);
     }
   } catch (err) {
-    res.status(200).send({ error: 'Falha ao buscar as reclamações' });
+    res.status(400).send({ error: 'Falha ao buscar as reclamações' });
   }
 });
 
@@ -37,7 +37,7 @@ router.post('/findAllResolvedComplaints', async (req, res) => {
       res.status(200).send(searchResolvedComplaints);
     }
   } catch (err) {
-    res.status(200).send({ error: 'Falha ao buscar as reclamações' });
+    res.status(400).send({ error: 'Falha ao buscar as reclamações' });
   }
 });
 

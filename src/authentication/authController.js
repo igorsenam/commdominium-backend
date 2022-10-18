@@ -6,7 +6,10 @@ const User = require('../models/User');
 const router = express.Router();
 
 router.post('/authenticate', async (req, res) => {
-  const searchLogin = await User.findOne({ where: { email: req.body.email } });
+  const searchLogin = await User.findOne({
+    where: { email: req.body.email },
+    attributes: { exclude: ['complaintId'] },
+  });
   if (searchLogin) {
     const password_valid = await bcrypt.compare(
       req.body.password,

@@ -3,38 +3,38 @@ const Complaint = require('../models/Complaint');
 
 const router = express.Router();
 
-router.post('/findAllUnsolvedComplaints', async (req, res) => {
+router.post('/findAllUnresolvedComplaints', async (req, res) => {
   try {
-    const searchUnsolvedComplaints = await Complaint.findAll({
+    const searchUnresolvedComplaints = await Complaint.findAll({
       where: {
         id_condominium: req.body.id_condominium,
         resolved: false,
       },
       order: [['createdAt', 'ASC']],
     });
-    if (searchUnsolvedComplaints == 0) {
+    if (searchUnresolvedComplaints == 0) {
       res.status(204).send({ error: 'Não possuem reclamações registradas' });
     } else {
-      res.status(200).send(searchUnsolvedComplaints);
+      res.status(200).send(searchUnresolvedComplaints);
     }
   } catch (err) {
     res.status(200).send({ error: 'Falha ao buscar as reclamações' });
   }
 });
 
-router.post('/findAllSolvedComplaints', async (req, res) => {
+router.post('/findAllResolvedComplaints', async (req, res) => {
   try {
-    const searchSolvedComplaints = await Complaint.findAll({
+    const searchResolvedComplaints = await Complaint.findAll({
       where: {
         id_condominium: req.body.id_condominium,
         resolved: true,
       },
       order: [['createdAt', 'DESC']],
     });
-    if (searchSolvedComplaints == 0) {
+    if (searchResolvedComplaints == 0) {
       res.status(204).send({ error: 'Não possuem reclamações registradas' });
     } else {
-      res.status(200).send(searchSolvedComplaints);
+      res.status(200).send(searchResolvedComplaints);
     }
   } catch (err) {
     res.status(200).send({ error: 'Falha ao buscar as reclamações' });

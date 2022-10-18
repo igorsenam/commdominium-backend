@@ -31,5 +31,6 @@ require('./services/searchOrderedNotices')(app);
 require('./services/searchUserList')(app);
 require('./services/userActiveStatus')(app);
 require('./services/searchComplaints')(app);
+require('./services/complaintResolvedStatus')(app);
 
 app.listen(process.env.PORT);

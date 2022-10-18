@@ -20,7 +20,7 @@ router.get('/findAll', async (req, res) => {
   try {
     const searchNotice = await Notice.findAll();
     if (searchNotice == 0)
-      res.status(400).send({ error: 'Não existem avisos cadastrados' });
+      res.status(204).send({ error: 'Não existem avisos cadastrados' });
     else res.status(200).send(searchNotice);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do aviso' });
@@ -33,7 +33,7 @@ router.post('/findById', async (req, res) => {
       where: { id: req.body.id },
     });
     if (searchNoticeById == null)
-      res.status(400).send({ error: 'Aviso inexistente' });
+      res.status(204).send({ error: 'Aviso inexistente' });
     else res.status(200).send(searchNoticeById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do aviso' });
@@ -46,7 +46,7 @@ router.patch('/update', async (req, res) => {
       where: { id: req.body.id },
     });
     if (searchNoticeById == null) {
-      return res.status(400).send({ error: 'Aviso inexistente' });
+      return res.status(204).send({ error: 'Aviso inexistente' });
     } else {
       const updateNotice = await Notice.update(
         {
@@ -71,7 +71,7 @@ router.delete('/delete', async (req, res) => {
       where: { id: req.body.id },
     });
     if (searchNoticeById == null) {
-      return res.status(400).send({ error: 'Aviso inexistente' });
+      return res.status(204).send({ error: 'Aviso inexistente' });
     } else {
       const deleteNotice = await Notice.destroy({
         where: { id: req.body.id },

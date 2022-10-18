@@ -23,7 +23,7 @@ router.get('/findAll', async (req, res) => {
     });
     if (searchAllUserType == 0)
       res
-        .status(400)
+        .status(204)
         .send({ error: 'Não existem tipos de usuários cadastrados' });
     else res.status(200).send(searchAllUserType);
   } catch (err) {
@@ -38,7 +38,7 @@ router.post('/findById', async (req, res) => {
       attributes: { exclude: ['userId'] },
     });
     if (searchUserTypeById == null)
-      res.status(400).send({ error: 'Tipo de usuário inexistente' });
+      res.status(204).send({ error: 'Tipo de usuário inexistente' });
     else res.status(200).send(searchUserTypeById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do tipo de usuário' });
@@ -52,7 +52,7 @@ router.patch('/update', async (req, res) => {
       attributes: { exclude: ['userId'] },
     });
     if (searchUserTypeById == null) {
-      return res.status(400).send({ error: 'Tipo de usuário inexistente' });
+      return res.status(204).send({ error: 'Tipo de usuário inexistente' });
     } else {
       const updateUserType = await userType.update(
         { type: req.body.type },
@@ -76,7 +76,7 @@ router.delete('/delete', async (req, res) => {
       attributes: { exclude: ['userId'] },
     });
     if (searchUserTypeById == null) {
-      return res.status(400).send({ error: 'Tipo de usuário inexistente' });
+      return res.status(204).send({ error: 'Tipo de usuário inexistente' });
     } else {
       const deleteUserType = await userType.destroy({
         where: { id: req.body.id },

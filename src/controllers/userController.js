@@ -36,7 +36,7 @@ router.get('/findAll', async (req, res) => {
       attributes: { exclude: ['password', 'complaintId'] },
     });
     if (searchUser == 0)
-      res.status(400).send({ error: 'Não existem usuários cadastrados' });
+      res.status(204).send({ error: 'Não existem usuários cadastrados' });
     else res.status(200).send(searchUser);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do usuário' });
@@ -50,7 +50,7 @@ router.post('/findById', async (req, res) => {
       attributes: { exclude: ['password', 'complaintId'] },
     });
     if (searchUserById == null)
-      res.status(400).send({ error: 'Usuário inexistente' });
+      res.status(204).send({ error: 'Usuário inexistente' });
     else res.status(200).send(searchUserById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do usuário' });
@@ -64,7 +64,7 @@ router.patch('/update', async (req, res) => {
       attributes: { exclude: ['complaintId'] },
     });
     if (searchUserById == null) {
-      return res.status(400).send({ error: 'Usuário inexistente' });
+      return res.status(204).send({ error: 'Usuário inexistente' });
     } else {
       const updateUser = await User.update(
         {
@@ -96,7 +96,7 @@ router.delete('/delete', async (req, res) => {
       attributes: { exclude: ['complaintId'] },
     });
     if (searchUserById == null) {
-      return res.status(400).send({ error: 'Usuário inexistente' });
+      return res.status(204).send({ error: 'Usuário inexistente' });
     } else {
       const deleteUser = await User.destroy({
         where: { id: req.body.id },

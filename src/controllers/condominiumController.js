@@ -24,7 +24,7 @@ router.get('/findAll', async (req, res) => {
       attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominium == 0)
-      res.status(400).send({ error: 'Não existem condomínios cadastrados' });
+      res.status(204).send({ error: 'Não existem condomínios cadastrados' });
     else res.status(200).send(searchCondominium);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do condomínio' });
@@ -38,7 +38,7 @@ router.post('/findById', async (req, res) => {
       attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominiumById == null)
-      res.status(400).send({ error: 'Condomínio inexistente' });
+      res.status(204).send({ error: 'Condomínio inexistente' });
     else res.status(200).send(searchCondominiumById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do condomínio' });
@@ -52,7 +52,7 @@ router.patch('/update', async (req, res) => {
       attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominiumById == null) {
-      return res.status(400).send({ error: 'Condomínio inexistente' });
+      return res.status(204).send({ error: 'Condomínio inexistente' });
     } else {
       const updateCondominium = await Condominium.update(
         {
@@ -80,7 +80,7 @@ router.delete('/delete', async (req, res) => {
       attributes: { exclude: ['userId', 'noticeId', 'complaintId'] },
     });
     if (searchCondominiumById == null) {
-      return res.status(400).send({ error: 'Condomínio inexistente' });
+      return res.status(204).send({ error: 'Condomínio inexistente' });
     } else {
       const deleteCondominium = await Condominium.destroy({
         where: { id: req.body.id },

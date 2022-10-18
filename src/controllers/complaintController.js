@@ -21,7 +21,7 @@ router.get('/findAll', async (req, res) => {
   try {
     const searchComplaint = await Complaint.findAll();
     if (searchComplaint == 0)
-      res.status(400).send({ error: 'Não existem reclamações cadastradas' });
+      res.status(204).send({ error: 'Não existem reclamações cadastradas' });
     else res.status(200).send(searchComplaint);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca da reclamação' });
@@ -34,7 +34,7 @@ router.post('/findById', async (req, res) => {
       where: { id: req.body.id },
     });
     if (searchComplaintById == null)
-      res.status(400).send({ error: 'Reclamação inexistente' });
+      res.status(204).send({ error: 'Reclamação inexistente' });
     else res.status(200).send(searchComplaintById);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca da reclamação' });
@@ -47,7 +47,7 @@ router.patch('/update', async (req, res) => {
       where: { id: req.body.id },
     });
     if (searchComplaintById == null) {
-      return res.status(400).send({ error: 'Reclamação inexistente' });
+      return res.status(204).send({ error: 'Reclamação inexistente' });
     } else {
       const updateComplaint = await Complaint.update(
         {
@@ -73,7 +73,7 @@ router.delete('/delete', async (req, res) => {
       where: { id: req.body.id },
     });
     if (searchComplaintById == null) {
-      return res.status(400).send({ error: 'Reclamação inexistente' });
+      return res.status(204).send({ error: 'Reclamação inexistente' });
     } else {
       const deleteComplaint = await Complaint.destroy({
         where: { id: req.body.id },

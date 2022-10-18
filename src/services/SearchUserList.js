@@ -13,7 +13,7 @@ router.post('/findUserList', async (req, res) => {
       order: [['fullname', 'ASC']],
     });
     if (searchUserList == 0) {
-      res.status(400).send({ error: 'Não possuem usuários registrados' });
+      res.status(204).send({ error: 'Não possuem usuários registrados' });
     } else {
       res.status(200).send(searchUserList);
     }

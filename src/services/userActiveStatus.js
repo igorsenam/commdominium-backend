@@ -10,7 +10,7 @@ router.patch('/updateActiveStatus', async (req, res) => {
       attributes: { exclude: ['complaintId'] },
     });
     if (searchUserById == null) {
-      return res.status(400).send({ error: 'Usuário inexistente' });
+      return res.status(204).send({ error: 'Usuário inexistente' });
     } else {
       if (searchUserById.active == true) {
         const userActiveStatus = await User.update(

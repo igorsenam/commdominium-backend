@@ -61,7 +61,7 @@ router.patch('/update', async (req, res) => {
   try {
     const searchUserById = await User.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['complaintId'] },
+      attributes: { exclude: ['password', 'complaintId'] },
     });
     if (searchUserById == null) {
       return res.status(204).send({ error: 'Usuário inexistente' });
@@ -73,12 +73,11 @@ router.patch('/update', async (req, res) => {
           building: req.body.building,
           number: req.body.number,
           email: req.body.email,
-          password: req.body.password,
           active: req.body.active,
           id_userType: req.body.id_userType,
           id_condominium: req.body.id_condominium,
         },
-        { where: { id: req.body.id }, individualHooks: true }
+        { where: { id: req.body.id } }
       );
       res
         .status(200)

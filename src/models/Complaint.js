@@ -39,8 +39,8 @@ const Complaint = db.define('complaint', {
   },
 });
 
-Complaint.hasOne(User);
-User.belongsTo(Complaint);
+User.hasOne(Complaint);
+Complaint.belongsTo(User);
 Complaint.hasOne(Condominium);
 Condominium.belongsTo(Complaint);
 

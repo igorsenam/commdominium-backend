@@ -27,6 +27,7 @@ require('./controllers/complaintController')(app);
 require('./authentication/authController')(app);
 require('./authentication/queryTokenController')(app);
 
+require('./services/changePassword')(app);
 require('./services/searchOrderedNotices')(app);
 require('./services/searchUserList')(app);
 require('./services/userActiveStatus')(app);

@@ -10,6 +10,7 @@ router.post('/findAllUnresolvedComplaints', async (req, res) => {
         id_condominium: req.body.id_condominium,
         resolved: false,
       },
+      attributes: { exclude: ['userId'] },
       order: [['createdAt', 'ASC']],
     });
     if (searchUnresolvedComplaints == 0) {
@@ -29,6 +30,7 @@ router.post('/findAllResolvedComplaints', async (req, res) => {
         id_condominium: req.body.id_condominium,
         resolved: true,
       },
+      attributes: { exclude: ['userId'] },
       order: [['createdAt', 'DESC']],
     });
     if (searchResolvedComplaints == 0) {

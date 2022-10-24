@@ -7,7 +7,7 @@ router.patch('/changePassword', async (req, res) => {
   try {
     const searchUserById = await User.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['password', 'complaintId'] },
+      attributes: { exclude: ['password'] },
     });
     if (searchUserById == null) {
       return res.status(204).send({ error: 'Usuário inexistente' });

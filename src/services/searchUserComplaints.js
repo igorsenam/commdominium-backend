@@ -9,6 +9,7 @@ router.post('/searchUserComplaints', async (req, res) => {
       where: {
         id_user: req.body.id_user,
       },
+      attributes: { exclude: ['userId'] },
       order: [['createdAt', 'DESC']],
     });
     if (searchUserComplaints == 0) {

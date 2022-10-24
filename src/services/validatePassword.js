@@ -8,7 +8,6 @@ const router = express.Router();
 router.post('/validatePassword', async (req, res) => {
   const searchLogin = await User.findOne({
     where: { id: req.body.id },
-    attributes: { exclude: ['complaintId'] },
   });
   if (searchLogin) {
     const password_valid = await bcrypt.compare(

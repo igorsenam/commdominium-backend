@@ -19,7 +19,9 @@ router.post('/register', async (req, res) => {
 
 router.get('/findAll', async (req, res) => {
   try {
-    const searchComplaint = await Complaint.findAll();
+    const searchComplaint = await Complaint.findAll({
+      attributes: { exclude: ['userId'] },
+    });
     if (searchComplaint == 0)
       res.status(204).send({ error: 'Não existem reclamações cadastradas' });
     else res.status(200).send(searchComplaint);
@@ -32,6 +34,7 @@ router.post('/findById', async (req, res) => {
   try {
     const searchComplaintById = await Complaint.findOne({
       where: { id: req.body.id },
+      attributes: { exclude: ['userId'] },
     });
     if (searchComplaintById == null)
       res.status(204).send({ error: 'Reclamação inexistente' });
@@ -45,6 +48,7 @@ router.patch('/update', async (req, res) => {
   try {
     const searchComplaintById = await Complaint.findOne({
       where: { id: req.body.id },
+      attributes: { exclude: ['userId'] },
     });
     if (searchComplaintById == null) {
       return res.status(204).send({ error: 'Reclamação inexistente' });
@@ -71,6 +75,7 @@ router.delete('/delete', async (req, res) => {
   try {
     const searchComplaintById = await Complaint.findOne({
       where: { id: req.body.id },
+      attributes: { exclude: ['userId'] },
     });
     if (searchComplaintById == null) {
       return res.status(204).send({ error: 'Reclamação inexistente' });

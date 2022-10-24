@@ -7,7 +7,6 @@ router.patch('/updateActiveStatus', async (req, res) => {
   try {
     const searchUserById = await User.findOne({
       where: { id: req.body.id_user },
-      attributes: { exclude: ['complaintId'] },
     });
     if (searchUserById == null) {
       return res.status(204).send({ error: 'Usuário inexistente' });

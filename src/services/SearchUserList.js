@@ -9,7 +9,7 @@ router.post('/findUserList', async (req, res) => {
       where: {
         id_condominium: req.body.id_condominium,
       },
-      attributes: { exclude: ['password', 'complaintId'] },
+      attributes: { exclude: ['password'] },
       order: [['fullname', 'ASC']],
     });
     if (searchUserList == 0) {

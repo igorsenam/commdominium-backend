@@ -8,7 +8,6 @@ router.post('/register', async (req, res) => {
     if (
       await User.findOne({
         where: { email: req.body.email },
-        attributes: { exclude: ['complaintId'] },
       })
     ) {
       return res.status(400).send({ error: 'Usuário já existente' });
@@ -33,7 +32,7 @@ router.post('/register', async (req, res) => {
 router.get('/findAll', async (req, res) => {
   try {
     const searchUser = await User.findAll({
-      attributes: { exclude: ['password', 'complaintId'] },
+      attributes: { exclude: ['password'] },
     });
     if (searchUser == 0)
       res.status(204).send({ error: 'Não existem usuários cadastrados' });
@@ -47,7 +46,7 @@ router.post('/findById', async (req, res) => {
   try {
     const searchUserById = await User.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['password', 'complaintId'] },
+      attributes: { exclude: ['password'] },
     });
     if (searchUserById == null)
       res.status(204).send({ error: 'Usuário inexistente' });
@@ -61,7 +60,7 @@ router.patch('/update', async (req, res) => {
   try {
     const searchUserById = await User.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['password', 'complaintId'] },
+      attributes: { exclude: ['password'] },
     });
     if (searchUserById == null) {
       return res.status(204).send({ error: 'Usuário inexistente' });
@@ -92,7 +91,6 @@ router.delete('/delete', async (req, res) => {
   try {
     const searchUserById = await User.findOne({
       where: { id: req.body.id },
-      attributes: { exclude: ['complaintId'] },
     });
     if (searchUserById == null) {
       return res.status(204).send({ error: 'Usuário inexistente' });

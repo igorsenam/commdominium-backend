@@ -7,6 +7,7 @@ router.patch('/updateResolvedStatus', async (req, res) => {
   try {
     const searchComplaintById = await Complaint.findOne({
       where: { id: req.body.id_complaint },
+      attributes: { exclude: ['userId'] },
     });
     if (searchComplaintById == null) {
       return res.status(204).send({ error: 'Reclamação inexistente' });

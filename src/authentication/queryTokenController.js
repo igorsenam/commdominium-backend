@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(authMiddleware);
 
 router.get('/', (req, res) => {
-  res.send({ user: req.userId, email: req.userEmail });
+  res.send({ id: req.userId, email: req.userEmail });
 });
 
 module.exports = (app) => app.use('/queryToken', router);

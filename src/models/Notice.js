@@ -21,7 +21,7 @@ const Notice = db.define('notices', {
   },
   eventDay: {
     type: Sequelize.DATE,
-    allowNull: false,
+    allowNull: true,
   },
   id_noticeType: {
     type: Sequelize.INTEGER,

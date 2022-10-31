@@ -6,7 +6,9 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
   try {
     const createNotice = await Notice.create({
+      title: req.body.title,
       message: req.body.message,
+      eventDay: req.body.eventDay,
       id_noticeType: req.body.id_noticeType,
       id_condominium: req.body.id_condominium,
     });
@@ -50,7 +52,9 @@ router.patch('/update', async (req, res) => {
     } else {
       const updateNotice = await Notice.update(
         {
+          title: req.body.title,
           message: req.body.message,
+          eventDay: req.body.eventDay,
           id_noticeType: req.body.id_noticeType,
           id_condominium: req.body.id_condominium,
         },

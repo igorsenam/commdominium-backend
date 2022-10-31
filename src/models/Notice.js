@@ -11,8 +11,16 @@ const Notice = db.define('notices', {
     unique: true,
     primaryKey: true,
   },
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   message: {
     type: Sequelize.STRING,
+    allowNull: false,
+  },
+  eventDay: {
+    type: Sequelize.DATE,
     allowNull: false,
   },
   id_noticeType: {

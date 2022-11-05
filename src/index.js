@@ -38,5 +38,6 @@ require('./services/userActiveStatus')(app);
 require('./services/searchUserComplaints')(app);
 require('./services/searchComplaints')(app);
 require('./services/complaintResolvedStatus')(app);
+require('./services/paymentPaidStatus')(app);
 
 app.listen(process.env.PORT);

@@ -12,6 +12,7 @@ const User = require('./models/User.js');
 const noticeType = require('./models/noticeType.js');
 const Notice = require('./models/Notice.js');
 const Complaint = require('./models/Complaint.js');
+const Payment = require('./models/Payment.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +24,7 @@ require('./controllers/userController')(app);
 require('./controllers/noticeTypeController')(app);
 require('./controllers/noticeController')(app);
 require('./controllers/complaintController')(app);
+require('./controllers/paymentController')(app);
 
 require('./authentication/authController')(app);
 require('./authentication/queryTokenController')(app);

@@ -11,7 +11,7 @@ const Payment = db.define('payment', {
     primaryKey: true,
   },
   dueDate: {
-    type: Sequelize.DATETIME,
+    type: Sequelize.DATE,
     allowNull: false,
   },
   paid: {

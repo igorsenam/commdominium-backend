@@ -10,6 +10,10 @@ const Payment = db.define('payment', {
     unique: true,
     primaryKey: true,
   },
+  billLink: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   dueDate: {
     type: Sequelize.DATE,
     allowNull: false,

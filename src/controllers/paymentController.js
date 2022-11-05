@@ -6,6 +6,7 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
   try {
     const createPayment = await Payment.create({
+      billLink: req.body.billLink,
       dueDate: req.body.dueDate,
       paid: req.body.paid,
       id_user: req.body.id_user,
@@ -54,6 +55,7 @@ router.patch('/update', async (req, res) => {
     } else {
       const updatePayment = await Payment.update(
         {
+          billLink: req.body.billLink,
           dueDate: req.body.dueDate,
           paid: req.body.paid,
           id_user: req.body.id_user,

@@ -11,7 +11,7 @@ const Payment = db.define('payment', {
     primaryKey: true,
   },
   billLink: {
-    type: Sequelize.STRING,
+    type: Sequelize.BLOB,
     allowNull: true,
   },
   dueDate: {

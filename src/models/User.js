@@ -39,6 +39,10 @@ const User = db.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
+    avatarArchive: {
+      type: Sequelize.BLOB,
+      allowNull: true,
+    },
     active: {
       type: Sequelize.BOOLEAN,
       allowNull: false,

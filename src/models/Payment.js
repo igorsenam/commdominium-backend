@@ -10,7 +10,7 @@ const Payment = db.define('payment', {
     unique: true,
     primaryKey: true,
   },
-  billLink: {
+  billArchive: {
     type: Sequelize.BLOB,
     allowNull: true,
   },

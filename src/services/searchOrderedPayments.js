@@ -9,7 +9,7 @@ router.post('/findAllOrderedPayments', async (req, res) => {
       where: {
         id_user: req.body.id_user,
       },
-      order: [['createdAt', 'DESC']],
+      order: [['dueDate', 'DESC']],
     });
     if (searchOrderedPayments == 0) {
       res.status(204).send({ error: 'Não possuem pagamentos registrados' });

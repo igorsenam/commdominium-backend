@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
         .send({ error: 'Boleto já existente para esse usuário' });
     }
     const createPayment = await Payment.create({
-      billArchive: req.body.billLink,
+      billArchive: req.body.billArchive,
       dueDate: req.body.dueDate,
       paid: req.body.paid,
       id_user: req.body.id_user,

@@ -14,9 +14,15 @@ const Notice = require('./models/Notice.js');
 const Complaint = require('./models/Complaint.js');
 const Payment = require('./models/Payment.js');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(
+  bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
+app.use(cors({ origin: true }));
 
 require('./controllers/condominiumController')(app);
 require('./controllers/userTypeController')(app);

@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => {
         where: { email: req.body.email },
       })
     ) {
-      return res.status(400).send({ error: 'Usuário já existente' });
+      return res.status(403).send({ error: 'Usuário já existente' });
     }
     const createUser = await User.create({
       fullname: req.body.fullname,

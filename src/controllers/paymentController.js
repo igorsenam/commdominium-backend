@@ -5,6 +5,19 @@ const router = express.Router();
 
 router.post('/register', async (req, res) => {
   try {
+    if (
+      await Payment.findOne({
+        where: {
+          id_user: req.body.id_user,
+          dueDate: req.body.dueDate + 'T00:00:00.000Z',
+        },
+        attributes: { exclude: ['userId'] },
+      })
+    ) {
+      return res
+        .status(403)
+        .send({ error: 'Boleto já existente para esse usuário' });
+    }
     const createPayment = await Payment.create({
       billArchive: req.body.billLink,
       dueDate: req.body.dueDate,

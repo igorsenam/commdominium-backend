@@ -40,7 +40,7 @@ const User = db.define(
       allowNull: false,
     },
     avatarArchive: {
-      type: Sequelize.BLOB,
+      type: Sequelize.BLOB('long'),
       allowNull: true,
     },
     active: {

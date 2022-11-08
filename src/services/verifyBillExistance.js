@@ -1,21 +1,24 @@
 const express = require('express');
+const sequelize = require('../database');
 const Payment = require('../models/Payment');
 
 const router = express.Router();
 
 router.post('/verifyBillExistance', async (req, res) => {
   try {
-    const verifyBill = await Payment.findOne({
-      where: {
-        id_user: req.body.id_user,
-        dueDate: req.body.dueDate + 'T00:00:00.000Z',
-      },
-      attributes: { exclude: ['userId'] },
-    });
-    if (verifyBill) {
+    const [verifyBillResults, verifyBillMetadata] = await sequelize.query(
+      'SELECT * FROM payments WHERE id_user = ' +
+        req.body.id_user +
+        ' AND MONTH(dueDate) = ' +
+        req.body.month +
+        ' AND YEAR(dueDate) = ' +
+        req.body.year +
+        ';'
+    );
+    if (verifyBillResults != 0) {
       return res.status(200).send({
         message: 'Pagamento já existente para esse usuário',
-        bill: verifyBill,
+        bill: verifyBillResults,
       });
     } else {
       return res.status(400).send({

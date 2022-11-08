@@ -14,8 +14,8 @@ router.post('/verifyBillExistance', async (req, res) => {
     });
     if (verifyBill) {
       return res.status(200).send({
-        error: 'Pagamento já existente para esse usuário',
-        billId: verifyBill.id,
+        message: 'Pagamento já existente para esse usuário',
+        bill: verifyBill,
       });
     } else {
       return res.status(400).send({

@@ -47,5 +47,6 @@ require('./services/complaintResolvedStatus')(app);
 require('./services/paymentPaidStatus')(app);
 require('./services/searchOrderedPayments')(app);
 require('./services/verifyBillExistance')(app);
+require('./services/searchCondominiumAssignee')(app);
 
 app.listen(process.env.PORT);

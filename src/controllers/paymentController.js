@@ -55,7 +55,7 @@ router.patch('/update', async (req, res) => {
     } else {
       const updatePayment = await Payment.update(
         {
-          billArchive: req.body.billLink,
+          billArchive: req.body.billArchive,
           dueDate: req.body.dueDate,
           paid: req.body.paid,
           id_user: req.body.id_user,

@@ -11,7 +11,7 @@ router.post('/findAllComplaints', async (req, res) => {
         c.createdAt, c.updatedAt, fullname, avatarArchive FROM complaints AS c
         LEFT JOIN users AS u 
         ON u.id = c.id_User 
-        WHERE c.id = ` +
+        WHERE c.id_condominium = ` +
           req.body.id_condominium +
           ' ORDER BY createdAt ASC;'
       );

@@ -11,11 +11,8 @@ router.post('/findAllOrderedPayments', async (req, res) => {
       },
       order: [['dueDate', 'DESC']],
     });
-    if (searchOrderedPayments == 0) {
-      res.status(204).send({ error: 'Não possuem pagamentos registrados' });
-    } else {
-      res.status(200).send(searchOrderedPayments);
-    }
+
+    res.status(200).send(searchOrderedPayments);
   } catch (err) {
     res.status(400).send({ error: 'Falha ao buscar os pagamentos' });
   }

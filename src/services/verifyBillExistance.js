@@ -14,13 +14,7 @@ router.post('/verifyBillExistance', async (req, res) => {
         req.body.year +
         ';'
     );
-    if (verifyBillResults != 0) {
-      return res.status(200).send(verifyBillResults);
-    } else {
-      return res.status(204).send({
-        error: 'Pagamento não existente para esse usuário',
-      });
-    }
+    return res.status(200).send(verifyBillResults);
   } catch (err) {
     console.log('err', err);
     return res.status(400).send({ error: 'Falha buscar pagamento do usuário' });

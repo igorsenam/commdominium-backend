@@ -21,9 +21,7 @@ router.get('/findAll', async (req, res) => {
     const searchAllNoticeType = await noticeType.findAll({
       attributes: { exclude: ['userId', 'noticeId'] },
     });
-    if (searchAllNoticeType == 0)
-      res.status(204).send({ error: 'Não existem tipos de aviso cadastrados' });
-    else res.status(200).send(searchAllNoticeType);
+    res.status(200).send(searchAllNoticeType);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do tipo de aviso' });
   }

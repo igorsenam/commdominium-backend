@@ -15,11 +15,8 @@ router.post('/findAllComplaints', async (req, res) => {
           req.body.id_condominium +
           ' ORDER BY createdAt ASC;'
       );
-    if (searchComplaintsResults == 0) {
-      res.status(204).send({ error: 'Não possuem reclamações registradas' });
-    } else {
-      res.status(200).send(searchComplaintsResults);
-    }
+
+    res.status(200).send(searchComplaintsResults);
   } catch (err) {
     res.status(400).send({ error: 'Falha ao buscar as reclamações' });
   }

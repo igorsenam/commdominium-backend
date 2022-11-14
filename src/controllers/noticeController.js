@@ -21,9 +21,7 @@ router.post('/register', async (req, res) => {
 router.get('/findAll', async (req, res) => {
   try {
     const searchNotice = await Notice.findAll();
-    if (searchNotice == 0)
-      res.status(204).send({ error: 'Não existem avisos cadastrados' });
-    else res.status(200).send(searchNotice);
+    res.status(200).send(searchNotice);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do aviso' });
   }

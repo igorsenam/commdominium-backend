@@ -35,9 +35,7 @@ router.get('/findAll', async (req, res) => {
     const searchUser = await User.findAll({
       attributes: { exclude: ['password'] },
     });
-    if (searchUser == 0)
-      res.status(204).send({ error: 'Não existem usuários cadastrados' });
-    else res.status(200).send(searchUser);
+    res.status(200).send(searchUser);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do usuário' });
   }

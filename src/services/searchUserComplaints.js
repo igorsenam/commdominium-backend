@@ -12,11 +12,7 @@ router.post('/searchUserComplaints', async (req, res) => {
       attributes: { exclude: ['userId'] },
       order: [['createdAt', 'DESC']],
     });
-    if (searchUserComplaints == 0) {
-      res.status(204).send({ error: 'Não possuem reclamações registradas' });
-    } else {
-      res.status(200).send(searchUserComplaints);
-    }
+    res.status(200).send(searchUserComplaints);
   } catch (err) {
     res.status(400).send({ error: 'Falha ao buscar as reclamações' });
   }

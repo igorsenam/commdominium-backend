@@ -22,9 +22,7 @@ router.get('/findAll', async (req, res) => {
     const searchPayment = await Payment.findAll({
       attributes: { exclude: ['userId'] },
     });
-    if (searchPayment == 0)
-      res.status(204).send({ error: 'Não existem pagamentos cadastrados' });
-    else res.status(200).send(searchPayment);
+    res.status(200).send(searchPayment);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca do pagamento' });
   }

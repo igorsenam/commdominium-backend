@@ -15,13 +15,7 @@ router.post('/searchCondominiumAssignee', async (req, res) => {
           req.body.id_condominium +
           ';'
       );
-    if (searchAssigneeResults != 0) {
-      return res.status(200).send(searchAssigneeResults);
-    } else {
-      return res.status(204).send({
-        error: 'Síndico não existente para esse condomínio',
-      });
-    }
+    return res.status(200).send(searchAssigneeResults);
   } catch (err) {
     console.log('err', err);
     return res

@@ -22,9 +22,7 @@ router.get('/findAll', async (req, res) => {
     const searchComplaint = await Complaint.findAll({
       attributes: { exclude: ['userId'] },
     });
-    if (searchComplaint == 0)
-      res.status(204).send({ error: 'Não existem reclamações cadastradas' });
-    else res.status(200).send(searchComplaint);
+    res.status(200).send(searchComplaint);
   } catch (err) {
     return res.status(400).send({ error: 'Falha na busca da reclamação' });
   }

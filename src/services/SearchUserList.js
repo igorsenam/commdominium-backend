@@ -12,11 +12,7 @@ router.post('/findUserList', async (req, res) => {
       attributes: { exclude: ['password'] },
       order: [['fullname', 'ASC']],
     });
-    if (searchUserList == 0) {
-      res.status(204).send({ error: 'Não possuem usuários registrados' });
-    } else {
-      res.status(200).send(searchUserList);
-    }
+    res.status(200).send(searchUserList);
   } catch (err) {
     res.status(400).send({ error: 'Falha ao buscar os usuários' });
   }

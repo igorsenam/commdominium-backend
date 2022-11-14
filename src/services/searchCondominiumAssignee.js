@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/searchCondominiumAssignee', async (req, res) => {
   try {
-    const [verifyAssigneeResults, verifyAssigneeMetadata] =
+    const [searchAssigneeResults, verifyAssigneeMetadata] =
       await sequelize.query(
         `SELECT u.id, fullname, block, building, u.number, email, active, id_usertype, 
         id_condominium, u.createdAt, u.updatedAt, avatarArchive FROM users AS u
@@ -15,10 +15,10 @@ router.post('/searchCondominiumAssignee', async (req, res) => {
           req.body.id_condominium +
           ';'
       );
-    if (verifyAssigneeResults != 0) {
-      return res.status(200).send(verifyAssigneeResults);
+    if (searchAssigneeResults != 0) {
+      return res.status(200).send(searchAssigneeResults);
     } else {
-      return res.status(400).send({
+      return res.status(204).send({
         error: 'Síndico não existente para esse condomínio',
       });
     }

@@ -11,7 +11,7 @@ const Payment = db.define('payment', {
     primaryKey: true,
   },
   billArchive: {
-    type: Sequelize.TEXT('long'),
+    type: Sequelize.TEXT,
     allowNull: true,
   },
   dueDate: {

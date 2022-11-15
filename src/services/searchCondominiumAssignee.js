@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/searchCondominiumAssignee', async (req, res) => {
   try {
-    const [searchAssigneeResults, verifyAssigneeMetadata] =
+    const [searchAssigneeResults, searchAssigneeMetadata] =
       await sequelize.query(
         `SELECT u.id, fullname, block, building, u.number, email, active, id_usertype, 
         id_condominium, u.createdAt, u.updatedAt, avatarArchive FROM users AS u

@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
 router.get('/findAll', async (req, res) => {
   try {
     const searchUser = await User.findAll({
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ['password', 'avatarArchive'] },
     });
     res.status(200).send(searchUser);
   } catch (err) {

@@ -14,12 +14,12 @@ const Notice = require('./models/Notice.js');
 const Complaint = require('./models/Complaint.js');
 const Payment = require('./models/Payment.js');
 
-app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.json({ limit: '1mb' }));
 app.use(
   bodyParser.urlencoded({
-    limit: '5mb',
+    limit: '1mb',
     extended: true,
-    parameterLimit: 5000,
+    parameterLimit: 1000,
   })
 );
 app.use(cors({ origin: true }));

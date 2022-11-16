@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "pm2 start src/index.js --name=commdominium_backend",
+    "stop": "pm2 stop commdominium_backend",
+    "restart": "pm2 restart commdominium_backend"
   },
   "keywords": [],
   "author": "Igor Sena",

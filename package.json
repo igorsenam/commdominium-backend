@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "pm2 start src/index.js --name=commdominium_backend",
-    "stop": "pm2 stop commdominium_backend",
-    "restart": "pm2 restart commdominium_backend"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "Igor Sena",
